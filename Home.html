@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ModernWear - Your Style Destination</title>
+    <link
+      rel="icon"
+      type="image/x-icon"
+      sizes="512x512"
+      href="./Favicon/android-chrome-512x512.png"
+    />
+    <script src="https://cdn.tailwindcss.com"></script>
+  </head>
+  <body class="bg-gray-100 text-gray-800 font-sans">
+    <!-- Navigation Bar -->
+    <nav
+      class="fixed top-0 left-0 w-full bg-white shadow-md z-50 px-4 sm:px-6 lg:px-8"
+    >
+      <div class="max-w-8xl mx-auto flex items-center justify-between py-2">
+        <!-- Logo and Store Name -->
+        <div class="flex items-center">
+          <a href="./Home.html"
+            ><img src="./Logo.png" alt="ModernWear Logo" class="h-16 w-auto"
+          /></a>
+          <span class="text-xl sm:text-2xl font-bold text-gray-900"
+            ><a href="./Home.html">ModernWear</a></span
+          >
+        </div>
+
+        <!-- Hamburger Menu for Mobile -->
+        <button
+          id="menu-toggle"
+          class="md:hidden p-2 focus:outline-none"
+          aria-label="Toggle Menu"
+        >
+          <svg
+            class="h-6 w-6 text-gray-800"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M4 6h16M4 12h16M4 18h16"
+            />
+          </svg>
+        </button>
+
+        <!-- Navigation Links and Search -->
+        <div
+          id="nav-menu"
+          class="hidden md:flex md:items-center md:gap-x-6 w-full md:w-auto absolute md:static top-16 left-0 bg-white md:bg-transparent shadow-md md:shadow-none px-4 py-4 md:p-0 flex-col md:flex-row z-40"
+        >
+          <!-- SearchBar -->
+          <input
+            type="text"
+            id="searchInput"
+            class="border-2 w-full sm:w-60 p-2 rounded-lg mb-4 md:mb-0 md:mr-4"
+            placeholder="Search products..."
+          />
+          <!-- Navigation Links -->
+          <div
+            class="flex flex-col md:flex-row items-center gap-y-4 md:gap-x-6 text-lg md:text-xl font-semibold"
+          >
+            <span
+              id="lbl1"
+              class="text-sky-500 transition-colors duration-200 cursor-pointer hover:text-sky-600"
+              >All</span
+            >
+            <span
+              id="lbl2"
+              class="text-gray-700 transition-colors duration-200 cursor-pointer hover:text-sky-600"
+              >Mens</span
+            >
+            <span
+              id="lbl3"
+              class="text-gray-700 transition-colors duration-200 cursor-pointer hover:text-sky-600"
+              >Womens</span
+            >
+          </div>
+        </div>
+
+        <!-- Cart Icon -->
+        <div class="relative flex items-center">
+          <button
+            id="cart-button"
+            class="p-2 hover:bg-gray-100 rounded-full transition-colors duration-200 relative"
+            aria-label="Shopping Bag"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              class="h-6 w-6 text-gray-800"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"
+              />
+            </svg>
+            <span
+              id="cart-count"
+              class="absolute -top-1 -right-1 inline-flex items-center justify-center px-1.5 py-0.5 text-xs font-bold leading-none text-white bg-red-600 rounded-full"
+              >0</span
+            >
+          </button>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Product Section -->
+    <main
+      class="max-w-8xl mx-auto px-4 sm:px-6 lg:px-8 pt-24 pb-16 flex flex-col lg:flex-row gap-6"
+    >
+      <!-- Filters -->
+      <div class="w-full lg:w-[16%] font-semibold space-y-6">
+        <div
+          class="text-gray-500 text-lg sm:text-xl transition-colors duration-200"
+        >
+          Filter by Category:
+          <select
+            id="filter"
+            class="text-base sm:text-lg bg-white mt-2 border-2 border-gray-500 rounded-lg px-4 py-1 w-full shadow-md shadow-gray-500/50"
+          >
+            <option value="all">Categories</option>
+          </select>
+        </div>
+        <div
+          class="text-gray-500 text-lg sm:text-xl transition-colors duration-200"
+        >
+          Filter by Season:
+          <select
+            id="season"
+            class="text-base sm:text-lg bg-white mt-2 border-2 border-gray-500 rounded-lg px-4 py-1 w-full shadow-md shadow-gray-500/50"
+          >
+            <option value="all">Season</option>
+          </select>
+        </div>
+        <div
+          class="text-gray-500 text-lg sm:text-xl transition-colors duration-200"
+        >
+          Filter by Color:
+          <select
+            id="color"
+            class="text-base sm:text-lg bg-white mt-2 border-2 border-gray-500 rounded-lg px-4 py-1 w-full shadow-md shadow-gray-500/50"
+          >
+            <option value="all">Select Color</option>
+          </select>
+        </div>
+        <div
+          class="text-gray-500 text-lg sm:text-xl transition-colors duration-200"
+        >
+          Filter by Price:
+          <div class="pl-4 space-y-2 mt-2">
+            <div class="flex items-center justify-between">
+              <span
+                id="lbl5"
+                class="text-base sm:text-lg text-gray-500 cursor-pointer"
+                >&lt; $20
+              </span>
+              <input
+                type="checkbox"
+                data-filter="lt20"
+                class="price-filter accent-gray-800 mr-6"
+              />
+            </div>
+            <div class="flex items-center justify-between">
+              <span
+                id="lbl6"
+                class="text-base sm:text-lg text-gray-500 cursor-pointer"
+                >$20 - $40
+              </span>
+              <input
+                data-filter="lt40"
+                type="checkbox"
+                class="price-filter accent-gray-800 mr-6"
+              />
+            </div>
+            <div class="flex items-center justify-between">
+              <span
+                id="lbl7"
+                class="text-base sm:text-lg text-gray-500 cursor-pointer"
+                >$40 - $60
+              </span>
+              <input
+                type="checkbox"
+                data-filter="lt60"
+                class="price-filter accent-gray-800 mr-6"
+              />
+            </div>
+            <div class="flex items-center justify-between">
+              <span
+                id="lbl8"
+                class="text-base sm:text-lg text-gray-500 cursor-pointer"
+                >$60 - $80
+              </span>
+              <input
+                type="checkbox"
+                data-filter="lt80"
+                class="price-filter accent-gray-800 mr-6"
+              />
+            </div>
+            <div class="flex items-center justify-between">
+              <span
+                id="lbl9"
+                class="text-base sm:text-lg text-gray-500 cursor-pointer"
+                >&gt; $80
+              </span>
+              <input
+                type="checkbox"
+                data-filter="gt80"
+                class="price-filter accent-gray-800 mr-6"
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- Products -->
+      <div
+        id="product"
+        class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 w-full"
+      ></div>
+    </main>
+
+    <!-- Cart Checkout Section -->
+    <div
+      id="cart-popup"
+      class="hidden fixed inset-0 bg-gray-800 bg-opacity-50 flex items-center justify-center z-50"
+    >
+      <div
+        class="relative bg-white w-full sm:w-[600px] max-h-[90vh] p-6 rounded-lg shadow-sm overflow-y-auto"
+      >
+        <button
+          id="closeBtn"
+          class="absolute p-2 hover:bg-gray-100 rounded-full transition-colors duration-200 top-4 right-4"
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            class="h-6 w-6"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M6 18L18 6M6 6l12 12"
+            />
+          </svg>
+        </button>
+        <h2 class="text-xl sm:text-2xl font-bold mb-4 z-20">Your Cart</h2>
+        <div
+          id="cart-details"
+          class="space-y-4 max-h-[50vh] overflow-y-auto z-20"
+        ></div>
+        <div class="mt-6 border-t pt-4 z-20">
+          <h3 class="text-lg font-semibold">Billing Details</h3>
+          <p class="text-gray-600 text-xl sm:text-2xl">
+            Total: $<span id="total-price">0</span>
+          </p>
+          <button
+            id="place-order"
+            class="w-full bg-gray-500 text-white py-2 rounded-md mt-4 hover:bg-gray-600 z-20"
+          >
+            Place Order
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Order Confirmation Popup -->
+    <div
+      id="order-confirmation"
+      class="hidden fixed inset-0 bg-gray-800 bg-opacity-50 flex items-center justify-center z-50"
+    >
+      <div class="bg-white w-full sm:w-96 p-6 rounded-lg shadow-lg">
+        <h2 class="text-xl sm:text-2xl font-bold mb-4">
+          Order Placed Successfully!
+        </h2>
+        <p id="order-confirmation-message" class="text-gray-600">
+          Thank you for your order. You will receive a confirmation email soon.
+        </p>
+        <button
+          id="close-order-popup"
+          class="w-full bg-green-600 text-white py-2 rounded-md mt-4 hover:bg-green-700"
+        >
+          Close
+        </button>
+      </div>
+    </div>
+
+    <!-- Footer -->
+    <footer
+      class="fixed bottom-0 left-0 w-full bg-gray-800 py-3 text-center text-white shadow-md"
+    >
+      <p>© 2025 ModernWear. All rights reserved.</p>
+    </footer>
+    <script src="./Home.js"></script>
+  </body>
+</html>
